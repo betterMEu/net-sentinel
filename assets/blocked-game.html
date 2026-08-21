@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Net Sentinel · 请求已拦截</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#f4f8fb;color:#17324d;font:16px/1.5 system-ui,sans-serif}
+  main{width:min(560px,92vw);padding:36px;background:#fff;border:1px solid #cbd9e5;border-radius:22px;box-shadow:0 18px 50px #42698618;text-align:center}
+  h1{margin:0 0 8px}p{color:#5e7183}.sea{position:relative;height:220px;margin:24px 0;overflow:hidden;border-radius:16px;background:linear-gradient(#dff4ff,#5eb4e8)}
+  .boat{position:absolute;left:calc(50% - 24px);top:76px;font-size:44px;transition:.12s}.wave{position:absolute;left:-10%;bottom:-44px;width:120%;height:110px;border-radius:45%;background:#187ebd88;animation:roll 4s linear infinite}
+  .wave:nth-child(2){bottom:-58px;background:#09679fcc;animation-duration:6s;animation-direction:reverse}@keyframes roll{to{transform:rotate(360deg)}}
+  button{border:0;border-radius:10px;padding:10px 18px;background:#276f9f;color:white;font-weight:700;cursor:pointer}
+</style>
+<main>
+  <h1>这条请求被 Net Sentinel 拦截了</h1>
+  <p>用左右方向键，让小船避开不断变化的水流。</p>
+  <div class="sea" id="sea"><div class="boat" id="boat">⛵</div><div class="wave"></div><div class="wave"></div></div>
+  <button id="reset">回到中央</button>
+</main>
+<script>
+  const boat=document.querySelector('#boat');let x=50;
+  const draw=()=>boat.style.left=`calc(${x}% - 24px)`;
+  addEventListener('keydown',e=>{if(e.key==='ArrowLeft')x=Math.max(8,x-6);if(e.key==='ArrowRight')x=Math.min(92,x+6);draw()});
+  document.querySelector('#reset').onclick=()=>{x=50;draw()};
+</script>
+</html>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10172b"/>
+      <stop offset="1" stop-color="#252044"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff7d8c"/>
+      <stop offset="1" stop-color="#ff4f6d"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#070912" flood-opacity=".55"/>
+    </filter>
+  </defs>
+  <rect width="720" height="520" rx="34" fill="url(#bg)"/>
+  <circle cx="360" cy="205" r="112" fill="#151c33" stroke="url(#ring)" stroke-width="18" filter="url(#shadow)"/>
+  <path d="M294 139l132 132" stroke="#ff657c" stroke-width="22" stroke-linecap="round"/>
+  <text x="360" y="372" text-anchor="middle" fill="#f1f4ff" font-family="Segoe UI, sans-serif" font-size="39" font-weight="700">请求已拦截</text>
+  <text x="360" y="421" text-anchor="middle" fill="#aeb8d9" font-family="Segoe UI, sans-serif" font-size="20">NET SENTINEL · BLACKLIST MATCHED</text>
+  <circle cx="42" cy="42" r="7" fill="#ff657c"/>
+  <circle cx="65" cy="42" r="7" fill="#ffc86b"/>
+  <circle cx="88" cy="42" r="7" fill="#67d99a"/>
+</svg>
+

@@ -1,0 +1,61 @@
+[proxy]
+listen = "127.0.0.1:8877"
+enabled_on_launch = false
+set_system_proxy_on_launch = false
+restore_system_proxy_on_exit = true
+network_mode = "auto"
+# 自动模式会在接管前捕获现有 Clash/Mihomo 系统代理；TUN/VPN 模式可留空。
+upstream_proxy = "127.0.0.1:7890"
+
+[startup]
+start_minimized = false
+
+[analytics]
+detailed_logging = true
+detailed_retention_days = 7
+aggregate_retention_days = 90
+
+[[actions]]
+id = "blocked-picture"
+kind = "popup_image"
+enabled = true
+
+[actions.params]
+source = "builtin:blocked"
+duration_ms = "4500"
+
+[[actions]]
+id = "blocked-sound"
+kind = "play_audio"
+enabled = true
+
+[actions.params]
+# 也可使用 builtin:bright-bells / builtin:gentle-alert 或绝对文件路径。
+source = "builtin:soft-chime"
+volume = "0.7"
+
+[[blacklist]]
+id = "block-example-path"
+enabled = true
+target = "url"
+mode = "contains"
+pattern = "example.com/blocked"
+methods = ["GET", "POST"]
+actions = ["blocked-picture", "blocked-sound"]
+
+[[blacklist]]
+id = "block-domain-and-subdomains"
+enabled = false
+target = "host"
+mode = "glob"
+pattern = "*.example-social.test"
+actions = ["blocked-picture", "blocked-sound"]
+
+[[blacklist]]
+id = "block-user-agent"
+enabled = false
+target = "header"
+header_name = "User-Agent"
+mode = "regex"
+pattern = "(?i)badbot|crawler"
+actions = ["blocked-sound"]
